@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_readdlist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 10:45:59 by rlutsch           #+#    #+#             */
-/*   Updated: 2016/12/01 11:39:23 by rlutsch          ###   ########.fr       */
+/*   Created: 2016/11/25 11:02:53 by rlutsch           #+#    #+#             */
+/*   Updated: 2016/11/25 11:02:55 by rlutsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 200
-# include <unistd.h>
+#include <ft_fc_dlist.h>
+#include <ft_fc_print.h>
 
-typedef struct	s_gnl
+void			ft_readdlist(t_index *list, char direction)
 {
-	char		*buf;
-	int			count;
-	int			i;
-	int			nl;
-	int			fd;
-}				t_gnl;
-int				get_next_line(int const fd, char **line);
-#endif
+	t_dlist		*tmp;
+
+	if (direction == 0)
+		tmp = list->first;
+	else
+		tmp = list->last;
+	while (tmp)
+	{
+		ft_putstr(tmp->name);
+		ft_putstr(" > ");
+		if (direction == 0)
+			tmp = tmp->next;
+		else
+			tmp = tmp->prev;
+	}
+	ft_putstr("NULL");
+}

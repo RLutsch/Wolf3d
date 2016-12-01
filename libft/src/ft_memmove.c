@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 10:45:59 by rlutsch           #+#    #+#             */
-/*   Updated: 2016/12/01 11:39:23 by rlutsch          ###   ########.fr       */
+/*   Created: 2016/11/25 11:00:09 by rlutsch           #+#    #+#             */
+/*   Updated: 2016/11/25 11:00:12 by rlutsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 200
-# include <unistd.h>
+#include <string.h>
 
-typedef struct	s_gnl
+void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	char		*buf;
-	int			count;
-	int			i;
-	int			nl;
-	int			fd;
-}				t_gnl;
-int				get_next_line(int const fd, char **line);
-#endif
+	char		*dstcpy;
+	const char	*srccpy;
+
+	dstcpy = (char *)dst;
+	srccpy = (const char *)src;
+	if (dst > src)
+	{
+		while (n--)
+			dstcpy[n] = srccpy[n];
+	}
+	else
+	{
+		while (n--)
+			*dstcpy++ = *srccpy++;
+	}
+	return (dst);
+}

@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 10:45:59 by rlutsch           #+#    #+#             */
-/*   Updated: 2016/12/01 11:39:23 by rlutsch          ###   ########.fr       */
+/*   Created: 2016/11/25 10:53:26 by rlutsch           #+#    #+#             */
+/*   Updated: 2016/11/25 10:53:28 by rlutsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 200
-# include <unistd.h>
+#include <ft_fc_tests.h>
 
-typedef struct	s_gnl
+int		ft_atoi(const char *str)
 {
-	char		*buf;
-	int			count;
-	int			i;
-	int			nl;
-	int			fd;
-}				t_gnl;
-int				get_next_line(int const fd, char **line);
-#endif
+	int		nb;
+	int		isneg;
+
+	isneg = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v'
+		|| *str == '\f' || *str == '\r')
+		str++;
+	nb = 0;
+	if (*str == '-')
+		isneg = 1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		nb = nb * 10;
+		nb = nb + (*str++ - '0');
+	}
+	if (isneg == 1)
+		nb = -nb;
+	return (nb);
+}

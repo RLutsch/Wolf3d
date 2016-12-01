@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlutsch <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/25 10:45:59 by rlutsch           #+#    #+#             */
-/*   Updated: 2016/12/01 11:39:23 by rlutsch          ###   ########.fr       */
+/*   Created: 2016/11/25 11:08:38 by rlutsch           #+#    #+#             */
+/*   Updated: 2016/11/25 11:08:41 by rlutsch          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 200
-# include <unistd.h>
+#include <string.h>
+#include <stdlib.h>
 
-typedef struct	s_gnl
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char		*buf;
-	int			count;
-	int			i;
-	int			nl;
-	int			fd;
-}				t_gnl;
-int				get_next_line(int const fd, char **line);
-#endif
+	char			*str;
+	unsigned int	i;
+	int				j;
+
+	if (s == 0)
+		return (0);
+	str = (char *)malloc((len + 1) * sizeof(*str));
+	i = start;
+	j = 0;
+	if (str == 0)
+		return (0);
+	while (i < (start + len) && s[i])
+		str[j++] = s[i++];
+	str[j] = 0;
+	return (str);
+}
