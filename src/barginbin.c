@@ -14,7 +14,7 @@
 
 void	info_to_win(t_env *e)
 {
-	mlx_string_put(e->mlx, e->win, 512, 20, RED, "Wolf3D...ish");
+	mlx_string_put(e->mlx, e->win, 512, 20, RED, "Wolf3D");
 	mlx_string_put(e->mlx, e->win, 900, 30, RED, "Keys:");
 	mlx_string_put(e->mlx, e->win, 900, 60, WHITE, "Arrow keys");
 	mlx_string_put(e->mlx, e->win, 30, 30, RED, "Exit Wolf:");

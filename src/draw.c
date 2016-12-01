@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include <wolf.h>
 
 void	set_colours(t_rgb *colour, int r, int g, int b)
 {
